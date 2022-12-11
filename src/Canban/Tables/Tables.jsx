@@ -75,4 +75,5 @@ export default Tables;
 const MainTableContainer = styled.div`
      display: flex;
      min-height: calc(100vh - 146.33px);
+     padding-bottom:10px;
 `;
