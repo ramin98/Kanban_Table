@@ -4,9 +4,7 @@ import ITEM_TYPE from "../data/types";
 import styled from "styled-components";
 
 const Item = ({ item, index, moveItem, status }) => {
-    let colors = [
-        '#ABE9CE','#D8DCFF','#FFDFBA','#FEC6B7','#D9E6A2','#F2BAE1'
-    ]
+
     const ref = useRef(null);
 
     const [, drop] = useDrop({
