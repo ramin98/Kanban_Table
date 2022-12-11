@@ -50,7 +50,7 @@ const Item = ({ item, index, moveItem, status }) => {
 
     return (
         <Fragment>
-            <Tasks primary={colors[Math.floor(Math.random() * colors.length)]} ref={ref}>
+            <Tasks primary={item.color} ref={ref}>
                 <TasksInfo>{item.content}</TasksInfo>
                 <TasksTime>{item.date}</TasksTime>
             </Tasks>
