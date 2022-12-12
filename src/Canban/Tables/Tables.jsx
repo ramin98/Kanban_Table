@@ -8,21 +8,6 @@ import CreateStatus from "../CanbanTable/CreateStatus";
 
 const Tables = ({setCounter}) => {
     const [items, setItems] = useState(data);
-
-    const showCount = () => {
-       
-       let newTask = Array.from(document.querySelector("#tables").children[0].firstElementChild.children)
-       let inProgress = Array.from(document.querySelector("#tables").children[1].firstElementChild.children)
-       let inReview = Array.from(document.querySelector("#tables").children[2].firstElementChild.children)
-       let completed = Array.from(document.querySelector("#tables").children[3].firstElementChild.children)
-        
-       setCounter({
-            open: newTask.length,
-            inProgress: inProgress.length,
-            inReview: inReview.length,
-            completed: completed.length
-       })
-     }
          
     const onDrop = (item, monitor, status) => {
         const mapping = statuses.find(si => si.status === status);
@@ -33,10 +18,6 @@ const Tables = ({setCounter}) => {
                 .concat({ ...item, status, icon: mapping.icon });
             return [ ...newItems ];
         });
-        
-        showCount()
-
-
     };
 
     const moveItem = (dragIndex, hoverIndex) => {
@@ -45,9 +26,23 @@ const Tables = ({setCounter}) => {
             const newItems = prevState.filter((i, idx) => idx !== dragIndex);
             newItems.splice(hoverIndex, 0, item);
             return  [ ...newItems ];
-        });
-        
+        });     
     };
+    
+    useEffect(function(){       
+        setInterval(function(){
+            let newTask = document.querySelector("#tables").children[0].firstElementChild.children
+            let inProgress = document.querySelector("#tables").children[1].firstElementChild.children
+            let inReview = document.querySelector("#tables").children[2].firstElementChild.children
+            let completed = document.querySelector("#tables").children[3].firstElementChild.children
+            setCounter({
+                open: newTask.length,
+                inProgress: inProgress.length,
+                inReview: inReview.length,
+                completed: completed.length
+           })
+        },300)
+    },[])
 
     return (
         <MainTableContainer id="tables">
