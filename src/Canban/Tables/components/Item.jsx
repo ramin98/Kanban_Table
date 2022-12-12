@@ -67,6 +67,7 @@ padding: 15px;
 gap: 10px;
 border-radius: 8px;
 background-color: ${props => props.primary};
+cursor:grab;
 `;
 
 const TasksInfo = styled.span`
